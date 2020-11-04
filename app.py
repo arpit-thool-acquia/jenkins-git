@@ -3,4 +3,4 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World! via Heroku'
+    return 'Hello, World! via Heroku!'
