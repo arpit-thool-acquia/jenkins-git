@@ -1,4 +1,4 @@
-import sys
+import sys, math
 from datetime import datetime
 class Car:
 
@@ -52,9 +52,9 @@ class Car:
     #Calculate the required result
     def map(self, road_type, road_length, garageDistance, speedModifier, maxRangeModifier):
 
-        # Car travels from Garage to Mapping Area and back
-        self.__totalTimeTaken += (2*garageDistance)/self.__speed
-
+        # Car travels from Garage to the Mapping Area
+        self.__totalTimeTaken += (garageDistance)/self.__speed
+        self.__totalDistanceTravelled += garageDistance
         self.__remainingLimit -= garageDistance
 
         #Car enters mapping area
@@ -65,18 +65,30 @@ class Car:
         mappingDistance = road_length
 
         #For the first round
-        # if(road_type == "urban"):
         self.__remainingLimit *= (1 + maxRangeModifier)
 
-        oneRoundDistance = self.__remainingLimit - self.__refuelDetourDistance
-        mappingDistance -= oneRoundDistance
+        if (self.__remainingLimit >= mappingDistance + self.__refuelDetourDistance):
+            self.__totalDistanceTravelled += mappingDistance
+            self.__remainingLimit -= mappingDistance
+        else:
+            oneRoundDistance = self.__remainingLimit - self.__refuelDetourDistance
+            mappingDistance -= oneRoundDistance
+            #First Refuel
+            self.__totalRefuels += 1
+            self.__remainingLimit = self.__maxRange
+            #Next Rounds
+            self.__totalRefuels += math.floor(mappingDistance/self.__remainingLimit)
+            self.__totalDistanceTravelled += road_length + self.__totalRefuels*self.__refuelDetourDistance
 
-        #First Refuel
-        self.__totalRefuels += 1
-        self.__remainingLimit = self.__maxRange
-        self.__totalTimeTaken
+        if(self.__remainingLimit / (1 + maxRangeModifier)  < garageDistance):
+            self.__totalRefuels += 1
+            self.__totalDistanceTravelled += self.__refuelDetourDistance
+            self.__remainingLimit = 200.0
+        else:
+            self.__remainingLimit /=  1 + maxRangeModifier
 
-        #Next Rounds
-        self.__totalRefuels += round(mappingDistance/self.__remainingLimit)
-        self.__totalDistanceTravelled += 2*garageDistance + road_length + self.__totalRefuels*self.__refuelDetourDistance
-        self.__totalTimeTaken += (road_length + self.__totalRefuels*self.__refuelDetourDistance)/self.__speed + (self.__totalRefuels*self.__refuelDetourTime)
+        self.__totalTimeTaken += (road_length+self.__totalRefuels*self.__refuelDetourDistance)/self.__speed + (self.__totalRefuels*self.__refuelDetourTime)
+        self.__speed = 70.0
+        self.__totalTimeTaken += (garageDistance)/self.__speed
+        self.__totalDistanceTravelled += garageDistance
+
