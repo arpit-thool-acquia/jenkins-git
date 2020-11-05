@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Travel History</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Travel History</h2>
+      <ul class="list-group">
+          {% for item in data %}
+          <li class="list-group-item">Road Type: {{ item["road_type"]}} </li>
+          <li class="list-group-item">Road Length : {{ item["road_length"]}} kms</li>
+          <li class="list-group-item">Total Distance Travelled : {{ item["totalDistanceTravelled"]}} kms</li>
+          <li class="list-group-item">Total Time Taken : {{ item["totalTimeTaken"] }} hrs</li>
+          <li class="list-group-item">Total Refuels : {{ item["totalRefuels"] }}</li>
+          <li class="list-group-item">Date and Time : {{ item["datetime"] }}</li>
+          <br>
+          {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
