@@ -29,5 +29,4 @@ pip3 install Flask pymongo
 ```
 flask run
 http://localhost:5000
-http://localhost:5000/history
 ```
