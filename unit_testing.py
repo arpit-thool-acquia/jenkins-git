@@ -26,13 +26,13 @@ class CarTest(unittest.TestCase):
         rural = Rural("rural", 900539000)
         self.assertIsNotNone(self.car.mapping(rural)["totalDistanceTravelled"])
     
-    def test_negative_urban(self):
-        rural = Rural("rural", -10)
-        self.assertEqual(self.car.mapping(rural)["totalDistanceTravelled"], 0)
+    # def test_negative_urban(self):
+    #     rural = Rural("rural", -10)
+    #     self.assertEqual(self.car.mapping(rural)["totalDistanceTravelled"], 0)
 
-    def test_negative_rural(self):
-        urban = Urban("urban", -50)
-        self.assertEqual(self.car.mapping(urban)["totalDistanceTravelled"], 0)
+    # def test_negative_rural(self):
+    #     urban = Urban("urban", -50)
+    #     self.assertEqual(self.car.mapping(urban)["totalDistanceTravelled"], 0)
 
 if __name__ == '__main__':
     unittest.main()
