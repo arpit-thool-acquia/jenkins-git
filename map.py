@@ -65,8 +65,8 @@ class Car:
         mappingDistance = road_length
 
         #For the first round
-        if(road_type == "urban"):
-            self.__remainingLimit *= (1 + maxRangeModifier)
+        # if(road_type == "urban"):
+        self.__remainingLimit *= (1 + maxRangeModifier)
 
         oneRoundDistance = self.__remainingLimit - self.__refuelDetourDistance
         mappingDistance -= oneRoundDistance
