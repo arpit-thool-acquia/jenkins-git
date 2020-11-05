@@ -28,5 +28,4 @@ pip3 install Flask pymongo
 ###### Running application 
 ```
 flask run
-http://localhost:5000
 ```
