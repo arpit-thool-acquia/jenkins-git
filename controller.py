@@ -19,7 +19,7 @@ class Controller:
     def check_road_length(self,road_length):
         if (road_length == 0.0):
             return 1
-        if not(road_length > 0.0 and road_length < 100000000000000.0):
+        if not(road_length > 0.0 and road_length < 100000000000000000.0):
             return 1
         else:
             return 0
