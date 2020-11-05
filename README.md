@@ -1,5 +1,5 @@
 ## Autonomous Car Mapping
-This is a Flask-MongoDB application for an autonomous car mapping through a specified area. It computes the Total Distance Travelled, Total Time taken and Total Refuels required by the car during the task. The user can also view previous travel history.
+This is a Flask-MongoDB application for an autonomous car mapping through a specified area. It computes the Total Distance Travelled, Total Time taken and Total Refuels required by the car during the task. The user can also view travel history.
 
 ### Run following instructions
 
