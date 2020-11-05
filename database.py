@@ -5,7 +5,7 @@ class Database:
     #Constructor configures client and db
     def __init__(self):
         self.__client = MongoClient('localhost:27017')
-        self.__db = self.__client.TaskManager
+        self.__db = self.__client.TravelHistory
 
     #Add trip history
     def addHistory(self, output):
