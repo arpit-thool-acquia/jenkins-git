@@ -4,6 +4,7 @@ from database import Database
 import json
 import sys
 
+#some change
 #application config
 app = Flask(__name__)
 app.config.update(dict(SECRET_KEY='mysecretkey'))
